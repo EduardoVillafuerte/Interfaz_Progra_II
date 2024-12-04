@@ -117,9 +117,8 @@ public class Articulo {
         JOptionPane.showMessageDialog(null,"Artículo no encontrado: " + nombre);
     }
     
-    public void modificarArticulo(String nombre, Categoria categoria, TipoAlerta prioridad, int cantidad){
+    public void modificarArticulo(Articulo art, String nombre, Categoria categoria, TipoAlerta prioridad, int cantidad){
         try {
-            Articulo art = buscarArticulo(nombre);
             art.setNombre(nombre);
             art.setCategoria(categoria);
             art.setPrioridad(prioridad);

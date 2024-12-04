@@ -13,8 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class BuscarForm extends javax.swing.JFrame {
     Articulo ar;
-    public BuscarForm(Articulo ar) {
+    int tipo;
+    public BuscarForm(Articulo ar, int tipo) {
         this.ar = ar;
+        this.tipo = tipo;
         initComponents();
     }
 
@@ -37,6 +39,12 @@ public class BuscarForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +102,10 @@ public class BuscarForm extends javax.swing.JFrame {
         Articulo articulo = ar.buscarArticulo(jTextField1.getText());
         if(articulo != null){
             JOptionPane.showMessageDialog(null, articulo.getNombre()+" "+articulo.getCategoria().toString()+" "+articulo.getCantidadDisponible());
+            if(tipo == 1){
+                new ModificarArticulo(ar,articulo).setVisible(true); 
+                this.dispose();
+        }
         }
         else{
             JOptionPane.showMessageDialog(null, "No se encontro el articulo "+jTextField1.getText());
@@ -105,6 +117,10 @@ public class BuscarForm extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
